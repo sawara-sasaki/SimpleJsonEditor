@@ -1,0 +1,12 @@
+main
+main.app
+main.exe
+
+*.exe~
+*.dll
+*.so
+*.dylib
+
+**/bin
+**/*.log
+**/*.DS_Store

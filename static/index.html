@@ -1,0 +1,63 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>Json Editor</title>
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script type="text/javascript" src="js/main.js"></script>
+  </head>
+  <body>
+    <form class="main-container">
+      <div class="text-center mb-4">
+        <h1 class="h3 mb-3 font-weight-normal">Simple Json Editor</h1>
+      </div>
+      <div class="form-group">
+        <label for="json-data">Json Data</label>
+        <textarea id="json-data" class="form-control" rows="10"></textarea>
+      </div>
+      <div id="message-danger-container" class="alert alert-danger hide" role="alert">
+        <span id="message-danger">Syntax Error</span>
+        <div class="close" aria-label="Close" onclick="CloseMessage(this);">
+          <span aria-hidden="true">&times;</span>
+        </div>
+      </div>
+      <div id="message-info-container" class="alert alert-info hide" role="alert">
+        <span id="message-info">Syntax OK</span>
+        <div class="close" aria-label="Close" onclick="CloseMessage(this);">
+          <span aria-hidden="true">&times;</span>
+        </div>
+      </div>
+      <input type="file" name="file" id="json-file" class="hide" accept=".json">
+      <div class="btn-toolbar" role="toolbar">
+        <label class="no-margin" for="json-file">
+          <div class="btn btn-primary">
+            <i class="fa fa-upload" aria-hidden="true"></i>
+          </div>
+        </label>
+        <div class="btn btn-primary" onclick="DownloadJsonFile();">
+          <i class="fa fa-download" aria-hidden="true"></i>
+        </div>
+      </div>
+      <li class="divider"></li>
+      <div class="btn-toolbar" role="toolbar">
+        <div class="btn btn-primary" onclick="CheckSyntax();">
+          Syntax Check
+        </div>
+      </div>
+      <div class="btn-toolbar" role="toolbar">
+        <div class="btn btn-primary" onclick="ReplaceNumber();">
+          Replace Number in Selected Area
+        </div>
+        <input type="tel" name="tel" value="1" id="replace-number" class="form-control">
+      </div>
+      <li class="divider"></li>
+      <p class="mt-5 mb-3 text-muted text-center">©sawara-sasaki 2020</p>
+    </form>
+  </body>
+</html>
