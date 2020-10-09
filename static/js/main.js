@@ -33,8 +33,10 @@ var replaceNumber = function(str, num) {
   return str.replace(/\d+/g, num);
 }
 var AddLinearData = function() {
-  const data = {action:"linear", parameters:[$("#linear-start").val(), $("#linear-end").val()]}
-  request(data, , (res)=>{
+  const s = parseInt($("#linear-start").val(), 10);
+  const e = parseInt($("#linear-end").val(), 10);
+  const data = {action:"linear", parameters:[s, e]}
+  request(data, (res)=>{
     AddData(res.data);
   }, onerror);
 }
@@ -60,7 +62,7 @@ var request = function(data, callback, onerror) {
     contentType:   'application/json',
     scriptCharset: 'utf-8',
     data:          JSON.stringify(data),
-    url:           App.url
+    url:           "./action"
   })
   .done(function(res) {
     callback(res);
