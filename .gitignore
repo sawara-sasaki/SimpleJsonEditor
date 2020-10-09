@@ -2,6 +2,8 @@ main
 main.app
 main.exe
 
+go.sum
+
 *.exe~
 *.dll
 *.so
