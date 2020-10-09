@@ -1,11 +1,14 @@
 package main
 
 import (
+	"io"
 	"os"
 	"fmt"
+	"bytes"
 	"os/exec"
 	"runtime"
 	"net/http"
+	"encoding/json"
 	"path/filepath"
 
 	"github.com/sawara-sasaki/SimpleJsonEditor/src/action"
@@ -31,12 +34,13 @@ func main() {
 
 			buf := new(bytes.Buffer)
 			io.Copy(buf, body)
-			res, err = action.Handle(buf.Bytes());
+			res, err := action.Handle(buf.Bytes());
 			if err != nil {
 				http.Error(w, err.Error(), http.StatusInternalServerError)
 			} else {
 				w.Header().Set("Content-Type", "application/json")
-				w.Write(res)
+				jsonBytes, _ := json.Marshal(res)
+				w.Write(jsonBytes)
 			}
 		}
 	})

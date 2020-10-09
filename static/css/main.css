@@ -57,7 +57,7 @@ body {
 }
 #linear-start,
 #linear-end {
-  width: calc(100% - 257px);
+  width: calc(100% - 310px);
   margin-left: 10px;
 }
 .divider {
