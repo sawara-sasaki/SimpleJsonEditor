@@ -2,6 +2,8 @@ package action
 
 import (
 	"fmt"
+  "net/http"
+  "encoding/json"
 )
 
 type ActionRequest struct {
@@ -45,8 +47,8 @@ func GetLinearIntData(start int, end int) []int {
 	return res
 }
 
-func GetLinearFloatData(start float64, end float64, length int) []float {
-	var res []float
+func GetLinearFloatData(start float64, end float64, length int) []float64 {
+	var res []float64
 	delta := (end - start) / float64(length)
 	for i := start; i <= end; i += delta {
 		res = res.append(i)

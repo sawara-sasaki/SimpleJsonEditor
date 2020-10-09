@@ -32,6 +32,43 @@ var ReplaceNumber = function() {
 var replaceNumber = function(str, num) {
   return str.replace(/\d+/g, num);
 }
+var AddLinearData = function() {
+  const data = {action:"linear", parameters:[$("#linear-start").val(), $("#linear-end").val()]}
+  request(data, , (res)=>{
+    AddData(res.data);
+  }, onerror);
+}
+var AddData = function(data) {
+  var obj = $("#json-data");
+  var ori = obj.val();
+  var s = obj[0].selectionStart;
+  obj.val(ori.substring(0, s) + data + ori.substring(s));
+}
+var onError = function(e) {
+  if (!!e.responseJSON) {
+    console.log(e.responseJSON.message);
+    showDangerMessage(e.responseJSON.message);
+  } else {
+    console.log(e.message);
+    showDangerMessage(e.message);
+  }
+};
+var request = function(data, callback, onerror) {
+  $.ajax({
+    type:          'POST',
+    dataType:      'json',
+    contentType:   'application/json',
+    scriptCharset: 'utf-8',
+    data:          JSON.stringify(data),
+    url:           App.url
+  })
+  .done(function(res) {
+    callback(res);
+  })
+  .fail(function(e) {
+    onerror(e);
+  });
+};
 var CheckSyntax = function() {
   var data = $("#json-data").val();
   if (!data || data.length < 1) {
