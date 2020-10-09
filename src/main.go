@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"path/filepath"
 
-	"github.com/sawara-sasaki/SimpleJsonEditor/action"
+	"github.com/sawara-sasaki/SimpleJsonEditor/src/action"
 )
 
 func main() {
