@@ -2,12 +2,11 @@ package action
 
 import (
 	"fmt"
-  "net/http"
-  "encoding/json"
+	"encoding/json"
 )
 
 type ActionRequest struct {
-	Action string        `json:"action"`
+	Action     string    `json:"action"`
 	Parameters []float64 `json:"parameters"`
 }
 
