@@ -33,9 +33,6 @@ func Handle(request []byte)(ActionResponse, error) {
 	default:
 		err = fmt.Errorf("err %s", "Bad Action")
 	}
-	if err == nil {
-		res.Status = http.StatusOK
-	}
 	return res, err
 }
 
