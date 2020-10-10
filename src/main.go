@@ -34,11 +34,14 @@ func main() {
 
 			buf := new(bytes.Buffer)
 			io.Copy(buf, body)
-			res, err := action.Handle(buf.Bytes());
+			var res action.ActionResponse
+			var err error
+			res, err = action.Handle(buf.Bytes());
 			if err != nil {
 				http.Error(w, err.Error(), http.StatusInternalServerError)
 			} else {
 				w.Header().Set("Content-Type", "application/json")
+				res.Status = http.StatusOK
 				jsonBytes, _ := json.Marshal(res)
 				w.Write(jsonBytes)
 			}
