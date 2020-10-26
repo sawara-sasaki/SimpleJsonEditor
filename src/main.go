@@ -20,14 +20,15 @@ func main() {
 		os.Exit(1)
 	}
 
-	path := filepath.Dir(exe)
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		if r.Method != http.MethodPost {
+			var path string
 			if len(r.URL.Path[1:]) == 0 {
-				http.ServeFile(w, r, path + "/static/index.html")
+				path = filepath.Join(filepath.Dir(exe), "static", "index.html")
 			} else {
-				http.ServeFile(w, r, path + "/static/" + r.URL.Path[1:])
+				path = filepath.Join(filepath.Dir(exe), "static", r.URL.Path[1:])
 			}
+			http.ServeFile(w, r, path)
 		} else {
 			body := r.Body
 			defer body.Close()
